@@ -16,7 +16,7 @@ yes.addEventListener("click", () => {
             font-family:Arial;
             text-align:center;">
             <h1>🎉 YAY!! 🎉</h1>
-            <h2>that was a prank😃</h2>
+            <h2>that was a prank, fuck off😃</h2>
         </div>
     `;
 });
