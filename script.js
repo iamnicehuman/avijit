@@ -1,45 +1,123 @@
 const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+const message = document.getElementById("message");
 
-yes.addEventListener("click", () => {
 
-    // Big confetti blast
+let dodges = 0;
+
+
+// YES BUTTON
+
+yes.addEventListener("click",()=>{
+
+
+    document.body.innerHTML = `
+
+    <div class="success">
+
+        <h1>You wish, bitch 🙂‍↔️</h1>
+
+    </div>
+
+    `;
+
+
+    // Confetti explosion
+
     confetti({
-        particleCount: 250,
-        spread: 180,
-        startVelocity: 60,
-        origin: { y: 0.6 }
+
+        particleCount:250,
+
+        spread:160,
+
+        startVelocity:60,
+
+        origin:{
+            y:.6
+        }
+
     });
 
-    // Continue confetti for 3 seconds
-    const duration = 3000;
-    const animationEnd = Date.now() + duration;
 
-    (function frame() {
-        confetti({
-            particleCount: 6,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 }
-        });
+
+    // Extra bursts
+
+    setTimeout(()=>{
 
         confetti({
-            particleCount: 6,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 }
+
+            particleCount:150,
+
+            spread:120,
+
+            origin:{
+                x:0
+            }
+
         });
 
-        if (Date.now() < animationEnd) {
-            requestAnimationFrame(frame);
-        }
-    })();
 
-    // Show success message after a short delay
-    setTimeout(() => {
-        document.body.innerHTML = `
-            <div class="success">
-                <h1>Yeah, you wish bitch</h1>
-            </div>
-        `;
-    }, 500);
+        confetti({
+
+            particleCount:150,
+
+            spread:120,
+
+            origin:{
+                x:1
+            }
+
+        });
+
+
+    },500);
+
+
+});
+
+
+
+
+// NO BUTTON RUNS AWAY 😂
+
+no.addEventListener("mouseover",()=>{
+
+
+    if(dodges >= 7){
+
+        return;
+
+    }
+
+
+    dodges++;
+
+
+    no.style.position="fixed";
+
+
+    no.style.left =
+    Math.random() *
+    (window.innerWidth-120)
+    +"px";
+
+
+    no.style.top =
+    Math.random() *
+    (window.innerHeight-60)
+    +"px";
+
+
+});
+
+
+
+
+// If they finally click NO
+
+no.addEventListener("click",()=>{
+
+    message.innerHTML=
+    "oh";
+
 });
