@@ -1,70 +1,45 @@
 const yes = document.getElementById("yes");
-const no = document.getElementById("no");
-const message = document.getElementById("message");
 
-let dodges = 0;
-
-// YES
 yes.addEventListener("click", () => {
 
-    document.body.innerHTML = `
-        <div class="success">
-            <h1>you wish , bitch</h1>
-            <p style="margin-top:20px;font-size:20px;">😊</p>
-        </div>
-    `;
+    // Big confetti blast
+    confetti({
+        particleCount: 250,
+        spread: 180,
+        startVelocity: 60,
+        origin: { y: 0.6 }
+    });
 
-    celebrate();
-});
+    // Continue confetti for 3 seconds
+    const duration = 3000;
+    const animationEnd = Date.now() + duration;
 
-// NO Button Runs Away
-no.addEventListener("mouseover", () => {
-
-    if (dodges >= 8) return;
-
-    dodges++;
-
-    no.style.position = "fixed";
-    no.style.left = Math.random() * (window.innerWidth - 120) + "px";
-    no.style.top = Math.random() * (window.innerHeight - 60) + "px";
-});
-
-// After enough dodges, let them click No
-no.addEventListener("click", () => {
-    message.textContent = "😊 lol";
-});
-
-// Confetti
-function celebrate(){
-
-    const duration = 3500;
-    const end = Date.now() + duration;
-
-    (function frame(){
-
+    (function frame() {
         confetti({
-            particleCount:5,
-            angle:60,
-            spread:60,
-            origin:{x:0}
+            particleCount: 6,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
         });
 
         confetti({
-            particleCount:5,
-            angle:120,
-            spread:60,
-            origin:{x:1}
+            particleCount: 6,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
         });
 
-        if(Date.now() < end){
+        if (Date.now() < animationEnd) {
             requestAnimationFrame(frame);
         }
-
     })();
 
-    confetti({
-        particleCount:250,
-        spread:150,
-        origin:{y:0.6}
-    });
-}
+    // Show success message after a short delay
+    setTimeout(() => {
+        document.body.innerHTML = `
+            <div class="success">
+                <h1>Yeah, you wish bitch</h1>
+            </div>
+        `;
+    }, 500);
+});
