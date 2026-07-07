@@ -3,121 +3,70 @@ const no = document.getElementById("no");
 const message = document.getElementById("message");
 
 
-let dodges = 0;
+yes.onclick = () => {
 
-
-// YES BUTTON
-
-yes.addEventListener("click",()=>{
-
-
-    document.body.innerHTML = `
-
-    <div class="success">
-
-        <h1>You wish, bitch 🙂‍↔️</h1>
-
-    </div>
-
-    `;
-
-
-    // Confetti explosion
 
     confetti({
 
-        particleCount:250,
+        particleCount:300,
 
-        spread:160,
-
-        startVelocity:60,
+        spread:180,
 
         origin:{
-            y:.6
+            y:0.6
         }
 
     });
 
 
+    document.querySelector(".container").innerHTML = `
 
-    // Extra bursts
+        <div class="emoji">
+        💖
+        </div>
 
-    setTimeout(()=>{
+        <h1>
+        
+        </h1>
 
-        confetti({
+        <p class="question">
+        YEAH, YOU WISH BITCH 🙂‍↔️
+        </p>
 
-            particleCount:150,
+    `;
 
-            spread:120,
-
-            origin:{
-                x:0
-            }
-
-        });
-
-
-        confetti({
-
-            particleCount:150,
-
-            spread:120,
-
-            origin:{
-                x:1
-            }
-
-        });
-
-
-    },500);
-
-
-});
+};
 
 
 
-
-// NO BUTTON RUNS AWAY 😂
-
-no.addEventListener("mouseover",()=>{
+let moves = 0;
 
 
-    if(dodges >= 7){
+no.onmouseover = () => {
 
-        return;
-
-    }
+    if(moves >= 6) return;
 
 
-    dodges++;
+    moves++;
 
 
-    no.style.position="fixed";
+    no.style.position="absolute";
 
 
     no.style.left =
-    Math.random() *
-    (window.innerWidth-120)
-    +"px";
+    Math.random()*80+"vw";
 
 
     no.style.top =
-    Math.random() *
-    (window.innerHeight-60)
-    +"px";
+    Math.random()*80+"vh";
 
 
-});
+};
 
 
+no.onclick = () => {
 
+    message.innerHTML =
+    "That's okay 💗";
 
-// If they finally click NO
-
-no.addEventListener("click",()=>{
-
-    message.innerHTML=
-    "oh";
-
-});
+};
