@@ -4,25 +4,23 @@ const message = document.getElementById("message");
 
 let dodges = 0;
 
+// YES
 yes.addEventListener("click", () => {
+
     document.body.innerHTML = `
-        <div style="
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-            background:#ffe6ec;
-            font-family:Arial;
-            text-align:center;">
-            <h1>🎉 YAY!! 🎉</h1>
-            <h2>that was a prank, fuck off😃</h2>
+        <div class="success">
+            <h1>you wish , bitch</h1>
+            <p style="margin-top:20px;font-size:20px;">😊</p>
         </div>
     `;
+
+    celebrate();
 });
 
+// NO Button Runs Away
 no.addEventListener("mouseover", () => {
-    if (dodges >= 8) return; // Eventually let them click it.
+
+    if (dodges >= 8) return;
 
     dodges++;
 
@@ -31,7 +29,42 @@ no.addEventListener("mouseover", () => {
     no.style.top = Math.random() * (window.innerHeight - 60) + "px";
 });
 
+// After enough dodges, let them click No
 no.addEventListener("click", () => {
-    message.innerHTML =
-        "😊 Thanks for being honest. No worries at all!";
+    message.textContent = "😊 lol";
 });
+
+// Confetti
+function celebrate(){
+
+    const duration = 3500;
+    const end = Date.now() + duration;
+
+    (function frame(){
+
+        confetti({
+            particleCount:5,
+            angle:60,
+            spread:60,
+            origin:{x:0}
+        });
+
+        confetti({
+            particleCount:5,
+            angle:120,
+            spread:60,
+            origin:{x:1}
+        });
+
+        if(Date.now() < end){
+            requestAnimationFrame(frame);
+        }
+
+    })();
+
+    confetti({
+        particleCount:250,
+        spread:150,
+        origin:{y:0.6}
+    });
+}
