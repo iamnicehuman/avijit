@@ -1,6 +1,7 @@
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
-const message = document.getElementById("message");
+
+let count = 0;
 
 
 yes.onclick = () => {
@@ -10,28 +11,26 @@ yes.onclick = () => {
 
         particleCount:300,
 
-        spread:180,
+        spread:200,
 
-        origin:{
-            y:0.6
-        }
+        startVelocity:50
 
     });
 
 
-    document.querySelector(".container").innerHTML = `
+    document.querySelector(".content").innerHTML=`
 
-        <div class="emoji">
+        <div class="flower">
         💖
         </div>
 
         <h1>
-        
+        YAY!! 🎉
         </h1>
 
-        <p class="question">
-        YEAH, YOU WISH BITCH 🙂‍↔️
-        </p>
+        <h2>
+        See you on our date ❤️
+        </h2>
 
     `;
 
@@ -39,34 +38,23 @@ yes.onclick = () => {
 
 
 
-let moves = 0;
+no.onmouseover=()=>{
 
 
-no.onmouseover = () => {
-
-    if(moves >= 6) return;
-
-
-    moves++;
+    if(count>5)
+        return;
 
 
-    no.style.position="absolute";
+    count++;
 
 
-    no.style.left =
-    Math.random()*80+"vw";
+    no.style.position="fixed";
 
 
-    no.style.top =
-    Math.random()*80+"vh";
+    no.style.left=Math.random()*80+"vw";
 
 
-};
+    no.style.top=Math.random()*80+"vh";
 
-
-no.onclick = () => {
-
-    message.innerHTML =
-    "That's okay 💗";
 
 };
