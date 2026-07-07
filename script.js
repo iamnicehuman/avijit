@@ -25,11 +25,11 @@ yes.onclick = () => {
         </div>
 
         <h1>
-        YAY!! 🎉
+        Oh!! 
         </h1>
 
         <h2>
-        See you on our date ❤️
+        You wish, bitch 🙂‍↔️
         </h2>
 
     `;
