@@ -5,95 +5,98 @@
 }
 
 
-body{
+html,body{
 
     width:100%;
-    height:100vh;
+    height:100%;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+}
+
+
+body{
 
     overflow:hidden;
 
-    background:#ffb6d9;
-
-    font-family:Arial, sans-serif;
+    font-family:"Arial",sans-serif;
 
 }
 
 
-/* soft glow */
+.page{
 
-body::before{
+    width:100vw;
+    height:100vh;
 
-    content:"";
+    display:flex;
 
-    position:absolute;
+    justify-content:center;
 
-    width:500px;
-    height:500px;
-
-    background:#ffd6e8;
-
-    border-radius:50%;
-
-    filter:blur(80px);
-
-    top:-200px;
-    left:-200px;
-
-}
+    align-items:center;
 
 
-body::after{
+    background:
 
-    content:"";
+    radial-gradient(circle at top,#ffd6e8,#ff9ec8),
 
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    background:#ff8fc4;
-
-    border-radius:50%;
-
-    filter:blur(100px);
-
-    bottom:-200px;
-    right:-200px;
+    linear-gradient(
+        135deg,
+        #ffb6d9,
+        #ff75b5
+    );
 
 }
 
 
 
-.container{
+.content{
 
-    position:relative;
+    width:90%;
 
-    z-index:2;
+    max-width:600px;
 
     text-align:center;
 
     color:white;
 
-    width:90%;
+    animation:appear 1s ease;
 
 }
 
 
 
-.emoji{
+@keyframes appear{
 
-    font-size:70px;
+    from{
 
-    animation:float 2s infinite ease-in-out;
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
 
 }
 
 
-@keyframes float{
+
+.flower{
+
+    font-size:80px;
+
+    animation:bounce 2s infinite;
+
+}
+
+
+
+@keyframes bounce{
 
     50%{
 
@@ -107,24 +110,23 @@ body::after{
 
 h1{
 
-    font-size:60px;
+    font-size:70px;
 
-    margin:20px 0;
+    margin:20px;
 
-    text-shadow:
-    0 5px 20px rgba(0,0,0,.15);
+    text-shadow:0 5px 20px #d94b88;
 
 }
 
 
 
-.question{
+h2{
 
-    font-size:30px;
+    font-size:32px;
 
-    margin-bottom:40px;
+    font-weight:500;
 
-    font-weight:bold;
+    margin-bottom:50px;
 
 }
 
@@ -136,7 +138,9 @@ h1{
 
     justify-content:center;
 
-    gap:25px;
+    align-items:center;
+
+    gap:30px;
 
 }
 
@@ -144,17 +148,22 @@ h1{
 
 button{
 
-    padding:16px 45px;
+    padding:18px 45px;
 
     border:none;
 
     border-radius:50px;
 
-    font-size:20px;
+    font-size:22px;
 
     cursor:pointer;
 
-    transition:.3s;
+    transition:
+
+    transform .3s ease,
+
+    box-shadow .3s ease;
+
 
 }
 
@@ -162,7 +171,7 @@ button{
 
 button:hover{
 
-    transform:scale(1.1);
+    transform:scale(1.12);
 
 }
 
@@ -172,7 +181,9 @@ button:hover{
 
     background:white;
 
-    color:#ff4f9a;
+    color:#ff4f91;
+
+    box-shadow:0 10px 30px #e75491;
 
 }
 
@@ -180,7 +191,7 @@ button:hover{
 
 #no{
 
-    background:#ff4f9a;
+    background:#ff4f91;
 
     color:white;
 
@@ -198,37 +209,42 @@ button:hover{
 
 
 
-
 @media(max-width:600px){
 
 
-    h1{
+h1{
 
-        font-size:45px;
+    font-size:45px;
 
-    }
-
-
-    .question{
-
-        font-size:22px;
-
-    }
+}
 
 
-    .buttons{
+h2{
 
-        flex-direction:column;
+    font-size:22px;
 
-        align-items:center;
-
-    }
+}
 
 
-    button{
+.buttons{
 
-        width:80%;
+    flex-direction:column;
 
-    }
+}
+
+
+button{
+
+    width:80%;
+
+}
+
+
+.flower{
+
+    font-size:60px;
+
+}
+
 
 }
